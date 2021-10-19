@@ -24,3 +24,9 @@ services:
     ports:
       - 4000:4000
 
+  vim:
+    image: ashimbel/u18dev
+    restart: always
+    command: bash -c "while true; do sleep 2; done"
+    volumes:
+    - ./:/mkhmac
