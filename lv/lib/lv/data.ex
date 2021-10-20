@@ -16,6 +16,10 @@ defmodule Lv.Data do
   def sort(param), do: GenServer.call(__MODULE__, {:sort, param})
   def sort(param, sd), do: GenServer.call(__MODULE__, {:sort, param, sd})
 
+  def filter(pname), do: GenServer.call(__MODULE__, {:filter, pname})
+
+  def get_data(), do: GenServer.call(__MODULE__, {:get_state})
+
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, [name: __MODULE__])
   end
@@ -33,6 +37,18 @@ defmodule Lv.Data do
   end
   def handle_call({:sort, param, sd}, _, state) do
     {:reply, :ok, ssort(state, param, sd)}
+  end
+
+  def handle_call({:get_state}, _, state) do
+    {:reply, state, state}
+  end
+
+  def handle_call({:filter, pname}, _, state) do
+    state = load_data() |> Enum.filter(fn(e) -> 
+        name = Map.get(e, "Player")
+        String.contains?(String.downcase(name), String.downcase(pname))
+    end)
+    {:reply, :ok, state}
   end
 
   def handle_call({:page, pagenum}, _, state) do

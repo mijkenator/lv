@@ -9,7 +9,7 @@ defmodule Lv.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Lv.Repo,
+      #Lv.Repo,
       # Start the Telemetry supervisor
       LvWeb.Telemetry,
       # Start the PubSub system

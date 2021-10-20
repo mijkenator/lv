@@ -35,10 +35,22 @@ defmodule LvWeb.DataLive do
     {:noreply, Phoenix.LiveView.push_patch(socket, to: Routes.live_path(socket, DataLive, srt: value))}
   end
 
+  def handle_event("filter", %{"_target" => ["player"], "player" => player}, socket) do
+    {:noreply, Phoenix.LiveView.push_patch(socket, to: Routes.live_path(socket, DataLive, filter: player))}
+  end
+
   def handle_params(%{"page" => page}, _, socket) do
     Logger.debug("DataLive HP1")
     connected = connected?(socket)
     assigns = get_and_assign_page(page, connected)
+    {:noreply, assign(socket, assigns)}
+  end
+  
+  def handle_params(%{"filter" => player}, _, socket) do
+    Logger.debug("DataLive Filter #{player}")
+    connected = connected?(socket)
+    Lv.Data.filter(player)
+    assigns = Keyword.merge(get_and_assign_page(1, connected), [pfilter: player])
     {:noreply, assign(socket, assigns)}
   end
   

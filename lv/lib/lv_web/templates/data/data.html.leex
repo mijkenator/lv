@@ -9,7 +9,6 @@
         <th>Att</th>
         <th>Yds</th>
         <th>Avg</th>
-        <th>Yds/G</th>
         <th><a href="#" class="<%= if Map.get(assigns, :srt, :nil) == "ydsg" , do: "acurrent" %>" phx-click="srt" phx-value-srt="ydsg">Yds/G</a></th>
         <th><a href="#" class="<%= if Map.get(assigns, :srt, :nil) == "td" , do: "acurrent" %>" phx-click="srt" phx-value-srt="td">TD</a></th>
         <th><a href="#" class="<%= if Map.get(assigns, :srt, :nil) == "lng" , do: "acurrent" %>" phx-click="srt" phx-value-srt="lng">Lng</a></th>
@@ -59,4 +58,8 @@
     </ul>
   </nav>
 </div>
+
+<form phx-change="filter">
+    Player Name: <input name="player" value="<%= Map.get(assigns, :pfilter, "") %>" style="width:300px">
+</form>
 

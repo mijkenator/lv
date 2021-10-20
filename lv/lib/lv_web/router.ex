@@ -18,8 +18,8 @@ defmodule LvWeb.Router do
     pipe_through :browser
 
     live "/data", DataLive
-
-    get "/", PageController, :index
+    get  "/download", PageController, :download
+    get  "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
