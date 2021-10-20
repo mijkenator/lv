@@ -15,9 +15,10 @@ defmodule Lv.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Lv.PubSub},
       # Start the Endpoint (http/https)
-      LvWeb.Endpoint
+      LvWeb.Endpoint,
       # Start a worker by calling: Lv.Worker.start_link(arg)
       # {Lv.Worker, arg}
+      {Lv.Data, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -33,4 +34,10 @@ defmodule Lv.Application do
     LvWeb.Endpoint.config_change(changed, removed)
     :ok
   end
+
+  def load_data() do
+    with {:ok, body} <- File.read(:code.priv_dir(:lv) ++ '/rushing.json'),
+         {:ok, json} <- Jason.decode(body), do: json
+  end
+
 end

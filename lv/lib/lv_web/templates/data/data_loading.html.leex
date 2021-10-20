@@ -1,0 +1,47 @@
+<div class="card mb-20">
+  <div class="card-header flex">
+    <h5 class="mb-0 flex-1">Listing Products</h5>
+  </div>
+  <table class="card-body table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Pos</th>
+        <th>Att/G</th>
+        <th>Att</th>
+        <th>Yds</th>
+        <th>Avg</th>
+        <th>Yds/G</th>
+        <th>TD</th>
+        <th><a href="#" phx-click="srt" phx-value-srt="lng">Lng1</a></th>
+        <th>1st</th>
+        <th>1st%</th>
+        <th>20+</th>
+        <th>40+</th>
+        <th>FUM</th>
+      </tr>
+    </thead>
+    <tbody>
+<%= for _ <- @products do %>
+      <tr>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+        <td><div class="h-6 bg-gray-200"></div></td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
+</div>

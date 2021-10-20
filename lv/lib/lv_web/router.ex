@@ -17,6 +17,8 @@ defmodule LvWeb.Router do
   scope "/", LvWeb do
     pipe_through :browser
 
+    live "/data", DataLive
+
     get "/", PageController, :index
   end
 
