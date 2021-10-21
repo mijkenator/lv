@@ -123,5 +123,15 @@ defmodule LvWeb.DataLive do
     ]
   end
 
+  def sim(assigns, param) do
+   case Map.get(assigns, :srt, :nil) do
+    param ->
+        case Map.get(assigns, :srtdir, :nil) do
+            :desc -> " ▼"
+            _     -> " ▲"
+        end
+    _     -> " ▶"
+   end
+  end
   
 end
